@@ -16,7 +16,7 @@
         <div>
           <ul class="flex items-center gap-5">
             <li class="font-display text-sm text-white">
-              <NuxtLink to="">Login</NuxtLink >
+              <NuxtLink to="/">Login</NuxtLink>
             </li>
             <li class="font-display text-sm text-white">
               <NuxtLink to="/register">Register</NuxtLink>

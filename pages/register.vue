@@ -52,29 +52,44 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
   if (validateForm()) {
-    try{
-      const response = await $axios.post('https://eventful-moments-api.onrender.com/api/v1/users/signup', {
-        fullname: fullname.value,
-        email: email.value,
-        password: password.value
-      });
+    try {
+      const response = await $axios.post(
+        "https://eventful-moments-api.onrender.com/api/v1/users/signup",
+        {
+          fullname: fullname.value,
+          email: email.value,
+          password: password.value,
+        }
+      );
 
-      const {token, user} = response.data
+      const { token, user } = response.data;
 
       // store auth token and user data in local storage
-      localStorage.setItem('authToken', token)
-      localStorage.setItem('isAuthenticated', true)
+      localStorage.setItem("authToken", token);
+      localStorage.setItem("isAuthenticated", true);
 
-      toast.success('Registration Successful! Redirecting to Login...', {position: "top-right"})
+      toast.success("Registration Successful! Redirecting to Login...", {
+        position: "top-right",
+      });
 
       // redirect to login page
-      router.push('/')
-    }catch (error){
-      console.error('Registration error:', error.response ? error.response.data : error.message);
-      toast.error('Registration Failed! Please try again', {position: "top-right"})
+      router.push("/");
+    } catch (error) {
+      console.error(
+        "Registration error:",
+        error.response ? error.response.data : error.message
+      );
+      toast.error("Registration Failed! Please try again", {
+        position: "top-right",
+      });
     }
   }
 };
+
+// custom layout is used for this page
+definePageMeta({
+  layout: "custom",
+});
 </script>
 <template>
   <div>

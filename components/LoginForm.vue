@@ -65,8 +65,8 @@ const handleSubmit = async (e) => {
     const { token, user } = response.data;
 
     // store the authentication token in localstorage
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem("authToken", token);
+    localStorage.setItem("isAuthenticated", "true");
 
     toast.success("Login successful!", { position: "top-right" });
 
@@ -75,7 +75,10 @@ const handleSubmit = async (e) => {
       router.push("/MyBucket");
     }, 2000);
   } catch (error) {
-    console.error('Login error:', error.response ? error.response.data : error.message);
+    console.error(
+      "Login error:",
+      error.response ? error.response.data : error.message
+    );
     toast.error("Invalid email or password!", { position: "top-right" });
   }
 };
@@ -88,8 +91,8 @@ const handleSubmit = async (e) => {
       <div class="mt-10 leading-6 mx-5">
         <h1 class="font-display text-2xl font-bold">Welcome back,</h1>
         <p class="mt-5 mb-5 font-display text-md">
-          Hi, my name is Eventful Moments, I am a bucket… no, not the bucket
-          of water but I store awesome moments you will like to have in coming
+          Hi, my name is Eventful Moments, I am a bucket… no, not the bucket of
+          water but I store awesome moments you will like to have in coming
           years.
         </p>
       </div>
@@ -110,7 +113,9 @@ const handleSubmit = async (e) => {
             </p>
           </div>
           <div class="mb-4">
-            <label for="Password" class="font-display block mb-2">Password</label>
+            <label for="Password" class="font-display block mb-2"
+              >Password</label
+            >
             <input
               type="Password"
               name="Password"

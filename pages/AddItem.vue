@@ -43,7 +43,7 @@ const handleSubmit = async (event) => {
 
   if (validateForm()) {
     try {
-      const token = localStorage.getItem('authToken');
+      const token = localStorage.getItem("authToken");
       const response = await $axios.post(
         "https://eventful-moments-api.onrender.com/api/v1/moment",
         {
@@ -91,7 +91,9 @@ const handleSubmit = async (event) => {
             v-model="futureDate"
             class="border border-gray-500 focus:outline-none w-80 h-8 block rounded-sm text-sm font-display text-black mt-3 mb-3"
           />
-          <p v-if="futureDateError" class="text-red-500 text-xs">{{ futureDateError }}</p>
+          <p v-if="futureDateError" class="text-red-500 text-xs">
+            {{ futureDateError }}
+          </p>
         </div>
         <div>
           <label for="Title" class="font-display text-black text-md"
@@ -118,7 +120,9 @@ const handleSubmit = async (event) => {
             rows="10"
             class="border border-gray-500 focus:outline-none w-80 block rounded-sm text-sm font-display text-black"
           ></textarea>
-          <p v-if="detailsError" class="text-red-500 text-xs">{{ detailsError }}</p>
+          <p v-if="detailsError" class="text-red-500 text-xs">
+            {{ detailsError }}
+          </p>
         </div>
         <div>
           <button

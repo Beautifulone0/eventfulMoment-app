@@ -1,12 +1,12 @@
 <template>
- <div>
+  <div>
     <LoginForm />
- </div>
+  </div>
 </template>
 
 <script setup>
-// Ensure that the custom layout is used for this page
+// custom layout is used for this page
 definePageMeta({
-  layout: 'custom'
+  layout: "custom",
 });
 </script>

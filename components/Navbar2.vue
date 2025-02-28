@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <div>
+  <div>
     <!-- Nav Bar -->
     <div>
       <div
@@ -16,10 +16,10 @@
         <div>
           <ul class="flex items-center gap-5">
             <li class="font-display text-sm text-white">
-              <NuxtLink to="/">Logout</NuxtLink >
+              <NuxtLink to="/">Logout</NuxtLink>
             </li>
             <li class="font-display text-sm text-white">
-              <NuxtLink to="/myBucket">My Bucket</NuxtLink >
+              <NuxtLink to="/myBucket">My Bucket</NuxtLink>
             </li>
           </ul>
         </div>
