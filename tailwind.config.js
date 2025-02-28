@@ -1,17 +1,17 @@
 module.exports = {
   content: [
-    './components/**/*.{vue,js}',
-    './layouts/**/*.{vue,js}',
-    './pages/**/*.{vue,js}',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
+    "./pages/**/*.{vue,js,ts,jsx,tsx}",
+    "./components/**/*.{vue,js,ts,jsx,tsx}",
+    "./layouts/**/*.{vue,js,ts,jsx,tsx}",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        display: ['Poppins', 'sans-serif'],
+        display: ["Poppins", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
+};
