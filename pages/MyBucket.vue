@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useNuxtApp } from "#app";
 import { useToast } from "vue-toastification";
 
@@ -8,6 +8,7 @@ const toast = useToast();
 
 const userName = ref("");
 const events = ref([]);
+const visibleEvents = ref(4); // Initially show 4 events
 
 // Fetch user data from localStorage
 onMounted(() => {
@@ -43,6 +44,16 @@ const fetchEvents = async () => {
     });
   }
 };
+
+// Computed property to get the visible events
+const displayedEvents = computed(() => {
+  return events.value.slice(0, visibleEvents.value);
+});
+
+// Method to load more events
+const loadMore = () => {
+  visibleEvents.value += 4; // Increase the number of visible events by 4
+};
 </script>
 
 <template>
@@ -53,7 +64,7 @@ const fetchEvents = async () => {
     >
       <div>
         <h1 class="font-display text-xl font-bold text-black">
-          Welcome {{ userName }},
+          Welcome {{ userName }}.
         </h1>
         <p class="font-display text-sm text-black">
           Here are items in your eventful moment bucket.
@@ -76,7 +87,7 @@ const fetchEvents = async () => {
     <div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mx-5 md:mx-20 my-9">
         <div
-          v-for="event in events"
+          v-for="event in displayedEvents"
           :key="event._id"
           class="bg-white shadow-lg hover:bg-[#FFF5A7] p-6 md:p-5"
         >
@@ -90,11 +101,11 @@ const fetchEvents = async () => {
           </div>
           <div class="flex items-center justify-between">
             <NuxtLink
-            :to="`/single-moment/${event._id}`"
-            class="text-[#5271FF]"
-          >
-            View Details
-          </NuxtLink>
+              :to="`/single-moment/${event._id}`"
+              class="text-[#5271FF]"
+            >
+              View Details
+            </NuxtLink>
             <div class="flex items-center gap-5">
               <p class="text-gray-600 text-sm">
                 {{ new Date().toLocaleDateString() }}
@@ -107,5 +118,22 @@ const fetchEvents = async () => {
         </div>
       </div>
     </div>
+    <div class="flex items-center justify-center">
+      <button
+        @click="loadMore"
+        class="bg-[#5271FF] p-3 rounded-sm w-30 mt-5 text-white font-display text-sm font-bold align-center text-center"
+      >
+        Load More
+      </button>
+    </div>
   </div>
 </template>
+ 
+ <!-- In the code above, we have a  MyBucket.vue  component that fetches events from the API and displays them in a list. The component uses the  fetchEvents  method to fetch events from the API and store them in the  events  ref. The  displayedEvents  computed property is used to get the visible events based on the  visibleEvents  ref. The  loadMore  method is used to increase the number of visible events by 4 when the "Load More" button is clicked. 
+ The component also displays a welcome message with the user's name and a button to add a new event. The events are displayed in a grid layout with each event showing the title, details, and dates. 
+ Conclusion 
+ In this tutorial, we have learned how to use the  <script setup>  syntax in Vue 3 to simplify the setup of Vue components. We have seen how to use the  <script setup>  syntax to define reactive variables, lifecycle hooks, and computed properties in a single block. We have also seen how to use the  <script setup>  syntax in a Nuxt.js application to simplify the setup of Vue components. 
+ The  <script setup>  syntax is a powerful feature in Vue 3 that simplifies the setup of Vue components by allowing you to define reactive variables, lifecycle hooks, and computed properties in a single block. This makes it easier to write and read Vue components, and reduces the amount of boilerplate code needed to set up a Vue component. 
+ If you have any questions or comments, please let me know in the comments below. 
+ Happy coding! 
+ Peer Review Contributions by:  Saiharsha Balasubramaniam -->
