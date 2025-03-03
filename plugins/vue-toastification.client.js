@@ -1,7 +1,7 @@
 import { defineNuxtPlugin } from "#app";
-import Toast, { useToast } from "vue-toastification";
+import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
-import "@/assets/css/toast-styles.css";
+import "@/assets/css/toast-styles.css"; // Optional custom styles
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(Toast, {
@@ -11,8 +11,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     bodyClassName: "custom-toast-body",
   });
 
-  const toast = useToast(); // ✅ Properly initialize toast
-
-  nuxtApp.provide("toast", toast); // ✅ Provide it globally
+  nuxtApp.provide("toast", () => import("vue-toastification").then(m => m.useToast()));
 });
-
