@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted } from "vue";
+// import { ref, onMounted } from "vue";
 import { useToast } from "vue-toastification";
 import { useNuxtApp } from "#app";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
+
 
 const email = ref("");
 const password = ref("");

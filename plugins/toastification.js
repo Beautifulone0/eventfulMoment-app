@@ -1,16 +1,13 @@
 import { defineNuxtPlugin } from "#app";
-import Toast, { POSITION } from "vue-toastification";
+import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
-import "@/assets/css/toast-styles.css"; // Import custom styles
+import "@/assets/css/toast-styles.css";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const options = {
-    // Default options
-    
-    // Custom classes
-    toastClassName: 'custom-toast',
-    bodyClassName: 'custom-toast-body',
-  };
-
-  nuxtApp.vueApp.use(Toast, options);
+  nuxtApp.vueApp.use(Toast, {
+    position: "top-right",
+    timeout: 3000,
+    toastClassName: "custom-toast",
+    bodyClassName: "custom-toast-body",
+  });
 });
