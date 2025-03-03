@@ -1,6 +1,7 @@
 <script setup>
 import { useNuxtApp } from "#app";
-import { useToast } from "vue-toastification";
+
+const toast = useNuxtApp().$toast;
 
 const router = useRouter();
 const fullname = ref("");
@@ -11,7 +12,6 @@ const emailerror = ref("");
 const passworderror = ref("");
 
 const { $axios } = useNuxtApp();
-const toast = useToast();
 
 // Form validation
 const validateForm = () => {

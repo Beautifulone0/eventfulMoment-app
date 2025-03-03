@@ -1,10 +1,13 @@
 <script setup>
 import axios from "axios";
-import { useToast } from "vue-toastification";
+
+import { useNuxtApp } from "#app";
+
+const toast = useNuxtApp().$toast;
 
 const route = useRoute();
 const router = useRouter();
-const toast = useToast();
+
 
 const date = ref("");
 const title = ref("");

@@ -1,9 +1,10 @@
 <script setup>
 import { useNuxtApp } from "#app";
-import { useToast } from "vue-toastification";
+
+const toast = useNuxtApp().$toast;
 
 const { $axios } = useNuxtApp();
-const toast = useToast();
+
 const router = useRouter();
 
 const futureDate = ref("");

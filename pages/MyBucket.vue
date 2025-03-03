@@ -1,9 +1,9 @@
 <script setup>
 import { useNuxtApp } from "#app";
-import { useToast } from "vue-toastification";
+
+const toast = useNuxtApp().$toast;
 
 const { $axios } = useNuxtApp();
-const toast = useToast();
 
 const userName = ref("");
 const events = ref([]);

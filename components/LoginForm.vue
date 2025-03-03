@@ -1,9 +1,7 @@
 <script setup>
-// import { ref, onMounted } from "vue";
-import { useToast } from "vue-toastification";
 import { useNuxtApp } from "#app";
-// import { useRouter } from "vue-router";
 
+const toast = useNuxtApp().$toast; // ✅ Correct way to access it
 
 const email = ref("");
 const password = ref("");
@@ -11,7 +9,7 @@ const emailerror = ref("");
 const passworderror = ref("");
 
 const router = useRouter();
-const toast = useToast();
+// const toast = useToast();
 const { $axios } = useNuxtApp();
 
 // Auto-fill user data when component loads
