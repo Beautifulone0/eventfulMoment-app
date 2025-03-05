@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
     // store the authentication token in localstorage
     localStorage.setItem("authToken", token);
     localStorage.setItem("isAuthenticated", "true");
-    localStorage.setItem("user", JSON.stringify(user)); 
+    
 
     notyf.success("Login successful!");
     // $toast.success("Login successful!", { position: "top-right" });

@@ -17,31 +17,17 @@ const events = ref([]);
 const visibleEvents = ref(4); // show 4 events
 
 // Fetch user data from localStorage
-onMounted(() => {
-  if (process.client) {
-    const userData = JSON.parse(localStorage.getItem("user"));
-    console.log("Retrieved user data:", userData); // Debugging
 
-    if (userData && userData.fullName) {
-      userName.value = userData.fullName.toUpperCase();
-    } else {
-      userName.value = "USER"; // Default if no name is found
-    }
+onMounted(() => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  console.log("Retrieved user data:", userData); // Debugging step
+
+  if (userData) {
+    userName.value = (userData.fullname || userData.fullName || "User").toUpperCase();
   }
 
   fetchEvents();
 });
-
-// onMounted(() => {
-//   const userData = JSON.parse(localStorage.getItem("user"));
-//   console.log("Retrieved user data:", userData); // Debugging step
-
-//   if (userData) {
-//     userName.value = (userData.fullname || userData.fullName || "User").toUpperCase();
-//   }
-
-//   fetchEvents();
-// });
 
 // onMounted(() => {
 //   const userData = JSON.parse(localStorage.getItem("user"));
