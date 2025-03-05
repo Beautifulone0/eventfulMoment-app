@@ -12,7 +12,7 @@ onMounted(() => {
 
 const { $axios } = useNuxtApp();
 
-const userName = ref("");
+const userName = ref("user");
 const events = ref([]);
 const visibleEvents = ref(4); // show 4 events
 
