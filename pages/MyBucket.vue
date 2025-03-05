@@ -21,9 +21,7 @@ onMounted(() => {
   const userData = JSON.parse(localStorage.getItem("user"));
   if (userData && userData.fullName) {
     userName.value = userData.fullName.toUpperCase();
-  } else {
-    userName.value = "User"; // Fallback name if no full name is found
-  }
+  } 
 
   fetchEvents();
 });
