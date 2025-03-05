@@ -76,6 +76,7 @@ const handleSubmit = async (event) => {
       // store auth token and user data in local storage
       localStorage.setItem("authToken", token);
       localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("user", JSON.stringify(user)); // ✅ Store user details
 
       notyf.success("Registration Successful! Redirecting to Login...");
       // toast.success("Registration Successful! Redirecting to Login...", {
