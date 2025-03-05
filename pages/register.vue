@@ -3,9 +3,12 @@ import { useNuxtApp } from "#app";
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
+let notyf;
+
 onMounted(() => {
   notyf = new Notyf();
 });
+
 
 // const toast = useNuxtApp().$toast;
 
