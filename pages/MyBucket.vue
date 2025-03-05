@@ -18,13 +18,26 @@ const visibleEvents = ref(4); // show 4 events
 
 // Fetch user data from localStorage
 onMounted(() => {
-  const userData = JSON.parse(localStorage.getItem("user"));
-  if (userData && userData.fullName) {
-    userName.value = userData.fullName.toUpperCase();
-  } 
+  if (process.client) { // Ensure it runs only in the browser
+    const userData = JSON.parse(localStorage.getItem("user"));
+    console.log("Retrieved user data:", userData); // Debugging step
+
+    if (userData) {
+      userName.value = (userData.fullname || userData.fullName || "User").toUpperCase();
+    }
+  }
 
   fetchEvents();
 });
+
+// onMounted(() => {
+//   const userData = JSON.parse(localStorage.getItem("user"));
+//   if (userData && userData.fullName) {
+//     userName.value = userData.fullName.toUpperCase();
+//   } 
+
+//   fetchEvents();
+// });
 
 // Fetch events from the API
 const fetchEvents = async () => {
