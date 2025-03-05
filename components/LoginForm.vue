@@ -1,7 +1,14 @@
 <script setup>
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast; // ✅ Correct way to access it
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+// const toast = useNuxtApp().$toast; // ✅ Correct way to access it
 
 const email = ref("");
 const password = ref("");
@@ -67,7 +74,8 @@ const handleSubmit = async (e) => {
     localStorage.setItem("authToken", token);
     localStorage.setItem("isAuthenticated", "true");
 
-    toast.success("Login successful!", { position: "top-right" });
+    notyf.success("Login successful!");
+    // $toast.success("Login successful!", { position: "top-right" });
 
     // redirect to mybucket after success
     setTimeout(() => {
@@ -78,7 +86,8 @@ const handleSubmit = async (e) => {
       "Login error:",
       error.response ? error.response.data : error.message
     );
-    toast.error("Invalid email or password!", { position: "top-right" });
+    notyf.error("Invalid email or password!");
+    // $toast.error("Invalid email or password!", { position: "top-right" });
   }
 };
 </script>

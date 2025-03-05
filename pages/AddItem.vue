@@ -1,7 +1,15 @@
 <script setup>
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast;
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+
+// const toast = useNuxtApp().$toast;
 
 const { $axios } = useNuxtApp();
 
@@ -58,9 +66,10 @@ const handleSubmit = async (event) => {
           },
         }
       );
-      toast.success("Event added successfully!", {
-        position: "top-right",
-      });
+      notyf.success("Event added successfully!");
+      // $toast.success("Event added successfully!", {
+      //   position: "top-right",
+      // });
 
       // redirect to mybucket page
       router.push("/MyBucket");
@@ -69,9 +78,10 @@ const handleSubmit = async (event) => {
         "Add item error:",
         error.response ? error.response.data : error.message
       );
-      toast.error("Failed to add item! Please try again", {
-        position: "top-right",
-      });
+      notyf.error("Failed to add item! Please try again");
+      // $toast.error("Failed to add item! Please try again", {
+      //   position: "top-right",
+      // });
     }
   }
 };

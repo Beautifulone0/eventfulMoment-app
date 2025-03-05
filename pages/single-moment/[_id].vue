@@ -1,9 +1,16 @@
 <script setup>
 import axios from "axios";
-
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast;
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+
+// const toast = useNuxtApp().$toast;
 
 const route = useRoute();
 const router = useRouter();
@@ -38,13 +45,15 @@ const fetchMomentDetails = async () => {
     );
     if (error.response && error.response.status === 404) {
       momentNotFound.value = true;
-      toast.error("Moment not found for this user", {
-        position: "top-right",
-      });
+      notyf.error("Moment not found for this user");
+      // $toast.error("Moment not found for this user", {
+      //   position: "top-right",
+      // });
     } else {
-      toast.error("Failed to fetch moment details! Please try again", {
-        position: "top-right",
-      });
+      notyf.error("Failed to fetch moment details! Please try again");
+      // $toast.error("Failed to fetch moment details! Please try again", {
+      //   position: "top-right",
+      // });
     }
   }
 };
@@ -60,18 +69,20 @@ const deleteMoment = async () => {
         },
       }
     );
-    toast.success("Moment deleted successfully!", {
-      position: "top-right",
-    });
+    notyf.success("Moment deleted successfully!");
+    // $toast.success("Moment deleted successfully!", {
+    //   position: "top-right",
+    // });
     router.push("/MyBucket"); // Redirect to MyBucket page after deletion
   } catch (error) {
     console.error(
       "Delete moment error:",
       error.response ? error.response.data : error.message
     );
-    toast.error("Failed to delete moment! Please try again", {
-      position: "top-right",
-    });
+    notyf.error("Failed to delete moment! Please try again");
+    // $toast.error("Failed to delete moment! Please try again", {
+    //   position: "top-right",
+    // });
   }
 };
 

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     ],
   },
   plugins: [
-    '~/plugins/vue-toastification.client.js',
+    // '~/plugins/vue-toastification.client.js',
     '~/plugins/axios.js'
   ],
  

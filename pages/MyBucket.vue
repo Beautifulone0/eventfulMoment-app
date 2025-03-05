@@ -1,7 +1,14 @@
 <script setup>
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast;
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+// const toast = useNuxtApp().$toast;
 
 const { $axios } = useNuxtApp();
 
@@ -38,9 +45,10 @@ const fetchEvents = async () => {
       "Fetch events error:",
       error.response ? error.response.data : error.message
     );
-    toast.error("Failed to fetch events! Please try again", {
-      position: "top-right",
-    });
+    notyf.error("Failed to fetch events! Please try again");
+    // $toast.error("Failed to fetch events! Please try again", {
+    //   position: "top-right",
+    // });
   }
 };
 

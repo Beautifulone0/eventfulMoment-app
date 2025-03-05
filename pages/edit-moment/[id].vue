@@ -1,9 +1,15 @@
 <script setup>
 import axios from "axios";
-
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast;
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+// const toast = useNuxtApp().$toast;
 
 const route = useRoute();
 const router = useRouter();
@@ -34,9 +40,10 @@ const fetchMomentDetails = async () => {
       "Fetch moment details error:",
       error.response ? error.response.data : error.message
     );
-    toast.error("Failed to fetch moment details! Please try again", {
-      position: "top-right",
-    });
+    notyf.error("Failed to fetch moment details! Please try again");
+    // $toast.error("Failed to fetch moment details! Please try again", {
+    //   position: "top-right",
+    // });
   }
 };
 
@@ -61,9 +68,10 @@ const updateMoment = async () => {
         },
       }
     );
-    toast.success("Moment updated successfully!", {
-      position: "top-right",
-    });
+    notyf.success("Moment updated successfully!");
+    // $toast.success("Moment updated successfully!", {
+    //   position: "top-right",
+    // });
     router.push(`/single-moment/${route.params.id}`); // Redirect to the moment details page after update
   } catch (error) {
     console.error(
@@ -71,9 +79,10 @@ const updateMoment = async () => {
       error.response ? error.response.data : error.message
     );
     console.log(error);
-    toast.error("Failed to update moment! Please try again", {
-      position: "top-right",
-    });
+    notyf.error("Failed to update moment! Please try again");
+  //   $toast.error("Failed to update moment! Please try again", {
+  //     position: "top-right",
+  //   });
   }
 };
 

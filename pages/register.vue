@@ -1,7 +1,15 @@
 <script setup>
 import { useNuxtApp } from "#app";
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
-const toast = useNuxtApp().$toast;
+let notyf;
+
+onMounted(() => {
+  notyf = new Notyf();
+});
+
+// const toast = useNuxtApp().$toast;
 
 const router = useRouter();
 const fullname = ref("");
@@ -12,6 +20,7 @@ const emailerror = ref("");
 const passworderror = ref("");
 
 const { $axios } = useNuxtApp();
+
 
 // Form validation
 const validateForm = () => {
@@ -68,9 +77,10 @@ const handleSubmit = async (event) => {
       localStorage.setItem("authToken", token);
       localStorage.setItem("isAuthenticated", true);
 
-      toast.success("Registration Successful! Redirecting to Login...", {
-        position: "top-right",
-      });
+      notyf.success("Registration Successful! Redirecting to Login...");
+      // toast.success("Registration Successful! Redirecting to Login...", {
+      //   position: "top-right",
+      // });
 
       // redirect to login page
       router.push("/");
@@ -79,9 +89,10 @@ const handleSubmit = async (event) => {
         "Registration error:",
         error.response ? error.response.data : error.message
       );
-      toast.error("Registration Failed! Please try again", {
-        position: "top-right",
-      });
+      notyf.error("Registration Failed! Please try again");
+      // toast.error("Registration Failed! Please try again", {
+      //   position: "top-right",
+      // });
     }
   }
 };
