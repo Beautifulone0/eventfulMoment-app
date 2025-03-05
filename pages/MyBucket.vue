@@ -12,7 +12,7 @@ onMounted(() => {
 
 const { $axios } = useNuxtApp();
 
-const userName = ref("user");
+const userName = ref("");
 const events = ref([]);
 const visibleEvents = ref(4); // show 4 events
 
@@ -21,7 +21,9 @@ onMounted(() => {
   const userData = JSON.parse(localStorage.getItem("user"));
   if (userData && userData.fullName) {
     userName.value = userData.fullName.toUpperCase();
-  } 
+  } else {
+    userName.value = "User"; // Fallback name if no full name is found
+  }
 
   fetchEvents();
 });

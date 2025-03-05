@@ -3,8 +3,6 @@ import { useNuxtApp } from "#app";
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
-let notyf;
-
 onMounted(() => {
   notyf = new Notyf();
 });
@@ -76,7 +74,6 @@ const handleSubmit = async (event) => {
       // store auth token and user data in local storage
       localStorage.setItem("authToken", token);
       localStorage.setItem("isAuthenticated", true);
-      
 
       notyf.success("Registration Successful! Redirecting to Login...");
       // toast.success("Registration Successful! Redirecting to Login...", {
