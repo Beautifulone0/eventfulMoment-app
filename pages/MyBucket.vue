@@ -17,16 +17,16 @@ const events = ref([]);
 const visibleEvents = ref(4); // show 4 events
 
 // Fetch user data from localStorage
-onMounted(() => {
-  const userData = JSON.parse(localStorage.getItem("user"));
-  if (userData && userData.fullName) {
-    userName.value = userData.fullName.toUpperCase();
-  } else {
-    userName.value = "User"; // Fallback name if no full name is found
-  }
+// onMounted(() => {
+//   const userData = JSON.parse(localStorage.getItem("user"));
+//   if (userData && userData.fullName) {
+//     userName.value = userData.fullName.toUpperCase();
+//   } else {
+//     userName.value = "User"; // Fallback name if no full name is found
+//   }
 
-  fetchEvents();
-});
+//   fetchEvents();
+// });
 
 // Fetch events from the API
 const fetchEvents = async () => {
